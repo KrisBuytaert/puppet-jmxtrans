@@ -13,15 +13,14 @@
 # [Remember: No empty lines between comments and class definition]
 class jmxtrans {
 
-
   package {"jmxtrans": 
     ensure => present;} 
   service {"jmxtrans": 
-    ensure => running; }
-
+    ensure    => running,
+    hasstatus => true,
+    enable    => true ; }
 }
-
-  class jmxtrans::example {
+ class jmxtrans::example {
 
   file { '/var/lib/jmxtrans/localhost.json':
     group   => '0',
