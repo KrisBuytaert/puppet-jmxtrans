@@ -15,6 +15,7 @@ class jmxtrans {
 
   package {"jmxtrans": 
     ensure => present;} 
+
   service {"jmxtrans": 
     ensure    => running,
     hasstatus => true,
@@ -31,3 +32,16 @@ class jmxtrans {
 
 }
 
+
+# Currently mostly using it to send stuff to graphite 
+# Need to create a ganglia template too 
+
+define jmxtrans::graphite ( $jmxport, $jmxhost, $objtype, $attributes, $graphiteport, $graphitehost )
+{
+  file { "/var/lib/jmxtrans/${name}.json":
+    mode     => '644',
+    owner    => '0',
+    group    => '0',
+    content  => template("jmxtrans/json.graphite.erb");
+  }
+}
