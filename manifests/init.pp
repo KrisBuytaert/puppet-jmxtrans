@@ -36,7 +36,7 @@ class jmxtrans {
 # Currently mostly using it to send stuff to graphite 
 # Need to create a ganglia template too 
 
-define jmxtrans::graphite ( $jmxport, $jmxhost, $objtype, $attributes, $graphiteport, $graphitehost )
+define jmxtrans::graphite ( $jmxport, $jmxhost, $objtype, $attributes, $graphiteport, $graphitehost ,$typenames='',$resultAlias='')
 {
   file { "/var/lib/jmxtrans/${name}.json":
     mode     => '644',

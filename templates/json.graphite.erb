@@ -5,10 +5,16 @@
     "queries" : [ { 
         "obj" : "<%= objtype %>",
         "attr": [ <%= attributes %> ],
+        <% if resultAlias != '' %> 
+        "resultAlias": "<%= resultAlias %>",
+        <% end %>
         "outputWriters" : [ { 
             "@class" : "code.googlecode.jmxtrans.model.output.GraphiteWriter",
             "settings": { 
                 "port" : <%= graphiteport %>,
+                <% if typenames != "" %>
+                "typeNames" : [ "<%= typenames %>" ],
+                <% end %>
                 "host" : "<%= graphitehost %>"
             }
         }]
