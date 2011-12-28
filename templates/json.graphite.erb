@@ -9,7 +9,7 @@
         "resultAlias": "<%= resultAlias %>",
         <% end %>
         "outputWriters" : [ { 
-            "@class" : "code.googlecode.jmxtrans.model.output.GraphiteWriter",
+            "@class" : "com.googlecode.jmxtrans.model.output.GraphiteWriter",
             "settings": { 
                 "port" : <%= graphiteport %>,
                 <% if typenames != "" %>
