@@ -16,6 +16,10 @@ class jmxtrans {
   package {"jmxtrans": 
     ensure => present;} 
 
+
+   # Current JMX trans service script doesn't return exict codes correctly,  patch subbmitted upstream and accepted. 
+   # Next JMX trans will  have good rc script 
+
   service {"jmxtrans": 
     ensure    => running,
     hasstatus => true,
