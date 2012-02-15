@@ -31,7 +31,7 @@ class jmxtrans {
     group   => '0',
     mode    => '644',
     owner   => '0',
-    source  => "puppet:///jmxtrans/localhost.json";
+    source  => "puppet:///modules/jmxtrans/localhost.json";
   }
 
 }
