@@ -25,7 +25,9 @@ class jmxtrans {
   service {'jmxtrans':
     ensure    => running,
     hasstatus => true,
-    enable    => true ; }
+    enable    => true,
+    require   => Package['jmxtrans'],
+  }
 }
 class jmxtrans::example {
 
@@ -33,7 +35,8 @@ class jmxtrans::example {
     group   => '0',
     mode    => '0644',
     owner   => '0',
-    source  => 'puppet:///modules/jmxtrans/localhost.json';
+    source  => 'puppet:///modules/jmxtrans/localhost.json',
+    require => Package['jmxtrans'],
   }
 
 }
@@ -50,6 +53,7 @@ define jmxtrans::graphite ( $jmxport, $jmxhost, $objtype, $attributes,
     mode     => '0644',
     owner    => '0',
     group    => '0',
-    content  => template('jmxtrans/json.graphite.erb');
+    content  => template('jmxtrans/json.graphite.erb'),
+    require => Package['jmxtrans'],
   }
 }
