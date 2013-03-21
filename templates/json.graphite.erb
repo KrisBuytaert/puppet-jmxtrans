@@ -10,8 +10,8 @@
             "@class": "<%= outputWriterClass %>",
             "settings": { 
                 "host": "<%= graphiteHost %>",
-                "port": <%= graphitePort %>,
-                <% if graphiteTypeNames != "" -%>"typeNames": [ "<%= graphiteTypeNames %>" ],<% end %>
+                "port": <%= graphitePort %><% if graphiteTypeNames != "" -%>,
+                "typeNames": [ "<%= graphiteTypeNames %>" ]<% end %>
             }
         }]
     }],
