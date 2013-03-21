@@ -7,7 +7,7 @@
         "attr": [ <%= attributes %> ],
         <% if resultAlias != '' -%>"resultAlias": "<%= resultAlias %>",<% end %>
         "outputWriters": [ { 
-            "@class": <%= outputWriterClass %>,
+            "@class": "<%= outputWriterClass %>",
             "settings": { 
                 "host": "<%= graphiteHost %>",
                 "port": <%= graphitePort %>,
