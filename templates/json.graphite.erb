@@ -15,10 +15,7 @@
             }
         }]
     }],
-    "queryIntervalInSeconds": <%= queryIntervalInSeconds %>,
-    "numQueryThreads": <%= numQueryThreads %>,
-    "exportIntervalInSeconds": <%= exportIntervalInSeconds %>,
-    "numExportThreads": <%= numExportThreads %>,
-    "exportBatchSize": <%= exportBatchSize %>,
+    "numQueryThreads": <%= numQueryThreads %><% if cronExpression != "" -%>,
+    "cronExpression": "<%= cronExpression %>"<% end %>
 }]
 }

@@ -50,9 +50,7 @@ define jmxtrans::graphite (
   $objectType, $attributes, $resultAlias='',
   $outputWriterClass='com.googlecode.jmxtrans.model.output.GraphiteWriter',
   $graphiteHost='127.0.0.1', $graphitePort='2003', $graphiteTypeNames='',
-  $queryIntervalInSeconds=30, $numQueryThreads=1,
-  $exportIntervalInSeconds=5, $numExportThreads=1,
-  $exportBatchSize=50)
+  $numQueryThreads=1,$cronExpression='')
 {
   file { "/var/lib/jmxtrans/${name}.json":
     mode     => '0644',

@@ -17,11 +17,8 @@ describe 'jmxtrans::graphite', :type => :define do
       :graphiteHost            => 'localhost',
       :graphitePort            => '2004',
       :graphiteTypeNames       => 'names',
-      :queryIntervalInSeconds  => 100,
-      :numQueryThreads         => 101,
-      :exportIntervalInSeconds => 102,
-      :numExportThreads        => 103,
-      :exportBatchSize         => 104,
+      :numQueryThreads         => 100,
+      :cronExpression          => '*/15 * * * * * *',
     }
     end
 
@@ -37,11 +34,8 @@ describe 'jmxtrans::graphite', :type => :define do
       content.should =~ %r["host": "localhost"]
       content.should =~ %r["port": 2004]
       content.should =~ %r["typeNames": \[ "names" \]]
-      content.should =~ %r["queryIntervalInSeconds": 100]
-      content.should =~ %r["numQueryThreads": 101]
-      content.should =~ %r["exportIntervalInSeconds": 102]
-      content.should =~ %r["numExportThreads": 103]
-      content.should =~ %r["exportBatchSize": 104]
+      content.should =~ %r["numQueryThreads": 100]
+      content.should match '"cronExpression": "\*/15 \* \* \* \* \* \*"'
     end
   end
 
@@ -66,11 +60,7 @@ describe 'jmxtrans::graphite', :type => :define do
       content.should =~ %r["attr": \[ "HeapMemoryUsage", "NonHeapMemoryUsage" \]]
       content.should =~ %r["host": "127.0.0.1"]
       content.should =~ %r["port": 2003]
-      content.should =~ %r["queryIntervalInSeconds": 30]
       content.should =~ %r["numQueryThreads": 1]
-      content.should =~ %r["exportIntervalInSeconds": 5]
-      content.should =~ %r["numExportThreads": 1]
-      content.should =~ %r["exportBatchSize": 50]
     end
   end
 end
