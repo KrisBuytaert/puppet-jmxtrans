@@ -1,23 +1,24 @@
 {
-"servers" : [ {
-    "port" : "<%= jmxport %>",
-    "host" : "<%= jmxhost %>",
-    "queries" : [ { 
-        "obj" : "<%= objtype %>",
+"servers": [ {
+    "host": "<%= jmxHost %>",
+    "port": "<%= jmxPort %>",
+    "queries": [ { 
+        "obj": "<%= objectType %>",
         "attr": [ <%= attributes %> ],
-        <% if resultAlias != '' %> 
-        "resultAlias": "<%= resultAlias %>",
-        <% end %>
-        "outputWriters" : [ { 
-            "@class" : "com.googlecode.jmxtrans.model.output.GraphiteWriter",
+        <% if resultAlias != '' -%>"resultAlias": "<%= resultAlias %>",<% end %>
+        "outputWriters": [ { 
+            "@class": <%= outputWriterClass %>,
             "settings": { 
-                "port" : <%= graphiteport %>,
-                <% if typenames != "" %>
-                "typeNames" : [ "<%= typenames %>" ],
-                <% end %>
-                "host" : "<%= graphitehost %>"
+                "host": "<%= graphiteHost %>",
+                "port": <%= graphitePort %>,
+                <% if graphiteTypeNames != "" -%>"typeNames": [ "<%= graphiteTypeNames %>" ],<% end %>
             }
         }]
-    }]
+    }],
+    "queryIntervalInSeconds": <%= queryIntervalInSeconds %>,
+    "numQueryThreads": <%= numQueryThreads %>,
+    "exportIntervalInSeconds": <%= exportIntervalInSeconds %>,
+    "numExportThreads": <%= numExportThreads %>,
+    "exportBatchSize": <%= exportBatchSize %>,
 }]
 }
