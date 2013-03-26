@@ -11,13 +11,13 @@
             "@class": "<%= outputWriterClass %>",
             "settings": { 
                 "host": "<%= graphiteHost %>",
-                "port": <%= graphitePort %><% if graphiteTypeNames != "" -%>,<% end %>
+                "port": <%= graphitePort -%><% if graphiteTypeNames != "" -%>,<% end %>
                 <% if graphiteTypeNames != '' -%>"typeNames": [ <%= graphiteTypeNames %> ]<% end %><% if graphiteRootPrefix != '' -%>,<% end %>
                 <% if graphiteRootPrefix != '' -%>"rootPrefix": "<%= graphiteRootPrefix %>"<% end %>
             }
         }]
     }],
-    "numQueryThreads": <%= numQueryThreads %><% if cronExpression != "" -%>,<% end %>
+    "numQueryThreads": <%= numQueryThreads -%><% if cronExpression != "" -%>,<% end %>
     <% if cronExpression != '' -%>"cronExpression": "<%= cronExpression %>"<% end %>
 }]
 }
