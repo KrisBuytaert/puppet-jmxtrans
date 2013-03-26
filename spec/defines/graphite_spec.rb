@@ -20,7 +20,6 @@ describe 'jmxtrans::graphite', :type => :define do
       :graphitePort            => '2004',
       :graphiteTypeNames       => '"name1", "name2"',
       :graphiteRootPrefix      => 'com.test',
-      :serverAlias             => 'myserver',
       :numQueryThreads         => 100,
       :cronExpression          => '*/15 * * * * * *',
     }
