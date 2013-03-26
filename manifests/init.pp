@@ -46,10 +46,10 @@ class jmxtrans::example {
 # Need to create a ganglia template too
 
 define jmxtrans::graphite ( 
-  $jmxHost, $jmxPort, 
+  $jmxHost, $jmxPort, $serverAlias='',
   $objectType, $attributes, $resultAlias='',
   $outputWriterClass='com.googlecode.jmxtrans.model.output.GraphiteWriter',
-  $graphiteHost='127.0.0.1', $graphitePort='2003', $graphiteTypeNames='',
+  $graphiteHost='127.0.0.1', $graphitePort='2003', $graphiteTypeNames='', $graphiteRootPrefix='',
   $numQueryThreads=1,$cronExpression='')
 {
   file { "/var/lib/jmxtrans/${name}.json":
