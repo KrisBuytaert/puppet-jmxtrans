@@ -29,6 +29,7 @@ class jmxtrans {
     require   => Package['jmxtrans'],
   }
 }
+
 class jmxtrans::example {
 
   file { '/var/lib/jmxtrans/localhost.json':
@@ -41,13 +42,15 @@ class jmxtrans::example {
 
 }
 
-
 # Currently mostly using it to send stuff to graphite
 # Need to create a ganglia template too
 
-define jmxtrans::graphite ( $jmxport, $jmxhost, $objtype, $attributes,
-                            $graphiteport, $graphitehost ,$typenames='',
-                            $resultAlias='')
+define jmxtrans::graphite ( 
+  $jmxHost, $jmxPort, $serverAlias='',
+  $objectType, $attributes, $resultAlias='',
+  $outputWriterClass='com.googlecode.jmxtrans.model.output.GraphiteWriter',
+  $graphiteHost='127.0.0.1', $graphitePort='2003', $graphiteTypeNames='', $graphiteRootPrefix='',
+  $numQueryThreads=1,$cronExpression='')
 {
   file { "/var/lib/jmxtrans/${name}.json":
     mode     => '0644',
